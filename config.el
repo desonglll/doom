@@ -10,10 +10,13 @@
 (global-set-key (kbd "s-\\") #'avy-goto-char-2)
 (global-set-key (kbd "M-#") #'consult-fd)
 (global-set-key (kbd "s-u") #'revert-buffer)
-
-
 (global-set-key (kbd "M-o") #'ace-window)
 
+(add-to-list 'exec-path "/opt/homebrew/bin")
+
+(after! pyim-basedict
+  (pyim-basedict-enable)
+  )
 
 
 (after! consult
@@ -46,8 +49,8 @@
 ;; (setq doom-font (font-spec :family "Terminess Nerd Font" :size 25 :weight 'regular)
 ;;       doom-variable-pitch-font (font-spec :family "Terminess Nerd Font" :size 25))
 
-(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 16 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 16))
+(setq doom-font (font-spec :family "Iosevka SS15" :size 16 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "Iosevka SS15" :size 16))
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (add-hook 'emacs-startup-hook
@@ -62,7 +65,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'gruber-darker)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
