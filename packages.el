@@ -15,12 +15,12 @@
 (package! typst-ts-mode
   :recipe (:host codeberg :repo "meow_king/typst-ts-mode"))
 (package! translate
-  :recipe (:host github :repo "desonglll/translate.el")
-  ;; :recipe (:local-repo "/Volumes/Tuo-APFS/workspace/translate.el/")
+  ;; :recipe (:host github :repo "desonglll/translate.el")
+  :recipe (:local-repo "~/.config/doom/local-packages/translate.el/")
   )
-(package! kill-buf
-  :recipe (:host github :repo "desonglll/kill-buf.el")
-  ;; :recipe (:local-repo "/Users/shinoda/workspace/kill-buf.el")
+(package! kill-other-buffers
+  ;; :recipe (:host github :repo "desonglll/kill-other-buffers.el")
+  :recipe (:local-repo "~/.config/doom/local-packages/kill-other-buffers.el/")
   )
 (package! pyim)
 (package! pyim-basedict)

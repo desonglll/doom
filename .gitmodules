@@ -1,0 +1,6 @@
+[submodule "local-packages/kill-other-buffers.el"]
+	path = local-packages/kill-other-buffers.el
+	url = git@github.com:desonglll/kill-other-buffers.el.git
+[submodule "local-packages/translate.el"]
+	path = local-packages/translate.el
+	url = git@github.com:desonglll/translate.el.git
