@@ -3,14 +3,19 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-(global-set-key (kbd "M-<f1>") #'magit)
-(global-set-key (kbd "M-<f2>") #'dirvish)
-(global-set-key (kbd "C-,") #'duplicate-line)
-(global-set-key (kbd "C-:") #'avy-goto-char-2)
-(global-set-key (kbd "s-\\") #'avy-goto-char-2)
-(global-set-key (kbd "M-#") #'consult-fd)
-(global-set-key (kbd "s-u") #'revert-buffer)
-(global-set-key (kbd "M-o") #'ace-window)
+(map! :g
+      "M-<f1>" #'magit-status
+      "M-<f2>" #'dirvish
+      "C-," #'duplicate-line
+      "C-:" #'avy-goto-char-2
+      "s-\\" #'avy-goto-char-2
+      "M-#" #'consult-fd
+      "s-u" #'revert-buffer
+      "s-i" #'imenu-list
+      "s-e" #'treemacs
+      "M-o" #'ace-window)
+
+(setq symbols-outline-window-position 'right)
 
 (add-to-list 'exec-path "/opt/homebrew/bin")
 

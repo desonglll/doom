@@ -25,6 +25,7 @@
 (package! pyim)
 (package! pyim-basedict)
 (package! gruber-darker-theme)
+(package! imenu-list)
 
 ;; (load-file "/Volumes/Tuo-APFS/workspace/translate/translate.el")
 
