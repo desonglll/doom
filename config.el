@@ -28,7 +28,7 @@
   (add-to-list 'eglot-server-programs '(python-ts-mode . ("ty" "server")))
   (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) . ("ruby-lsp")))
   (setq elixir-lsp-path "~/elixir-ls-v0.31.1/")
-  (add-to-list 'eglot-server-programs `((elixir-mode elixir-ts-mode) . (,(expand-file-name "language_server.sh" elixir-lsp-path))))
+  (add-to-list 'eglot-server-programs `((elixir-mode elixir-ts-mode) . (,(expand-file-name "language_server.sh" elixir-lsp-path)))))
 
 (after! pyim-basedict
   (pyim-basedict-enable)
@@ -65,8 +65,8 @@
 ;; (setq doom-font (font-spec :family "Terminess Nerd Font" :size 25 :weight 'regular)
 ;;       doom-variable-pitch-font (font-spec :family "Terminess Nerd Font" :size 25))
 
-(setq doom-font (font-spec :family "Iosevka SS15" :size 16 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "Iosevka SS15" :size 16))
+(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 16 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 16))
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (add-hook 'emacs-startup-hook
