@@ -2,6 +2,10 @@
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+(setq backup-directory-alist `(("." . "~/.emacs.d/backups/")))
+(setq auto-save-file-name-transforms `((".*" "~/.emacs.d/backups/" t)))
 
 (map! :g
       "M-<f1>" #'magit-status
@@ -19,10 +23,17 @@
 
 (add-to-list 'exec-path "/opt/homebrew/bin")
 
+
+(after! eglot
+  (add-to-list 'eglot-server-programs '(python-ts-mode . ("ty" "server")))
+  (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) . ("ruby-lsp")))
+  (setq elixir-lsp-path "~/elixir-ls-v0.31.1/")
+  (add-to-list 'eglot-server-programs `((elixir-mode elixir-ts-mode) . (,(expand-file-name "language_server.sh" elixir-lsp-path))))
+
 (after! pyim-basedict
   (pyim-basedict-enable)
-  )
 
+  )
 
 (after! consult
   (consult-customize
@@ -54,13 +65,18 @@
 ;; (setq doom-font (font-spec :family "Terminess Nerd Font" :size 25 :weight 'regular)
 ;;       doom-variable-pitch-font (font-spec :family "Terminess Nerd Font" :size 25))
 
+<<<<<<< variant A
+(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 20))
+>>>>>>> variant B
 (setq doom-font (font-spec :family "Iosevka SS15" :size 16 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "Iosevka SS15" :size 16))
+======= end
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (add-hook 'emacs-startup-hook
-  (lambda ()
-    (select-frame-set-input-focus (selected-frame))))
+          (lambda ()
+            (select-frame-set-input-focus (selected-frame))))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
