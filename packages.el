@@ -18,9 +18,14 @@
   :recipe (:host github :repo "desonglll/translate.el")
   ;; :recipe (:local-repo "/Volumes/Tuo-APFS/workspace/translate.el/")
   )
-
+(package! kill-buf
+  :recipe (:host github :repo "desonglll/kill-buf.el")
+  ;; :recipe (:local-repo "/Users/shinoda/workspace/kill-buf.el")
+  )
 (package! pyim)
 (package! pyim-basedict)
+(package! gruber-darker-theme)
+(package! imenu-list)
 
 ;; (load-file "/Volumes/Tuo-APFS/workspace/translate/translate.el")
 

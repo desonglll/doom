@@ -7,26 +7,33 @@
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups/")))
 (setq auto-save-file-name-transforms `((".*" "~/.emacs.d/backups/" t)))
 
-(global-set-key (kbd "M-<f1>") #'magit)
-(global-set-key (kbd "M-<f2>") #'dirvish)
-(global-set-key (kbd "C-,") #'duplicate-line)
-(global-set-key (kbd "C-:") #'avy-goto-char-2)
-(global-set-key (kbd "s-\\") #'avy-goto-char-2)
-(global-set-key (kbd "M-#") #'consult-fd)
-(global-set-key (kbd "s-u") #'revert-buffer)
+(map! :g
+      "M-<f1>" #'magit-status
+      "M-<f2>" #'dirvish
+      "C-," #'duplicate-line
+      "C-:" #'avy-goto-char-2
+      "s-\\" #'avy-goto-char-2
+      "M-#" #'consult-fd
+      "s-u" #'revert-buffer
+      "s-i" #'imenu-list
+      "s-e" #'treemacs
+      "M-o" #'ace-window)
 
+(setq symbols-outline-window-position 'right)
 
-(global-set-key (kbd "M-o") #'ace-window)
+(add-to-list 'exec-path "/opt/homebrew/bin")
+
 
 (after! eglot
   (add-to-list 'eglot-server-programs '(python-ts-mode . ("ty" "server")))
   (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) . ("ruby-lsp")))
   (setq elixir-lsp-path "~/elixir-ls-v0.31.1/")
   (add-to-list 'eglot-server-programs `((elixir-mode elixir-ts-mode) . (,(expand-file-name "language_server.sh" elixir-lsp-path))))
+
+(after! pyim-basedict
+  (pyim-basedict-enable)
+
   )
-
-
-
 
 (after! consult
   (consult-customize
@@ -58,8 +65,13 @@
 ;; (setq doom-font (font-spec :family "Terminess Nerd Font" :size 25 :weight 'regular)
 ;;       doom-variable-pitch-font (font-spec :family "Terminess Nerd Font" :size 25))
 
+<<<<<<< variant A
 (setq doom-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'regular)
       doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 20))
+>>>>>>> variant B
+(setq doom-font (font-spec :family "Iosevka SS15" :size 16 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "Iosevka SS15" :size 16))
+======= end
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (add-hook 'emacs-startup-hook
@@ -74,7 +86,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'gruber-darker)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
