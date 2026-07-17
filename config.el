@@ -21,11 +21,12 @@
 
 (setq symbols-outline-window-position 'right)
 
-(add-to-list 'exec-path "/opt/homebrew/bin")
+(add-to-list 'exec-path "/opt/homebrew/bin/")
+(add-to-list 'exec-path "~/.local/bin/")
 
 
 (after! eglot
-  (add-to-list 'eglot-server-programs '(python-ts-mode . ("ty" "server")))
+  (add-to-list 'eglot-server-programs '((python-mode python-ts-mode) . ("ty" "server")))
   (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) . ("ruby-lsp")))
   (setq elixir-lsp-path "~/elixir-ls-v0.31.1/")
   (add-to-list 'eglot-server-programs `((elixir-mode elixir-ts-mode) . (,(expand-file-name "language_server.sh" elixir-lsp-path)))))

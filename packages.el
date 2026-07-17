@@ -22,6 +22,9 @@
   ;; :recipe (:host github :repo "desonglll/kill-other-buffers.el")
   :recipe (:local-repo "~/.config/doom/local-packages/kill-other-buffers.el/")
   )
+
+(package! protobuf-mode)
+
 (package! pyim)
 (package! pyim-basedict)
 (package! gruber-darker-theme)
