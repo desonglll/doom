@@ -1,0 +1,134 @@
+Doom Emacs Configuration
+========================
+
+This is a personal Doom Emacs configuration.  This file describes what
+must be installed on a new machine before this configuration can be
+used.  The instructions below assume macOS with Homebrew, since the
+configuration adds /opt/homebrew/bin to `exec-path'; adjust package
+names for other systems as needed.
+
+Contents
+--------
+
+  init.el          Enabled Doom modules.
+  config.el        Personal settings, key bindings, eglot servers.
+  packages.el      Extra packages installed on top of Doom.
+  local-packages/  Personal packages, tracked as git submodules:
+                     translate.el          (github.com/desonglll/translate.el)
+                     kill-other-buffers.el (github.com/desonglll/kill-other-buffers.el)
+
+Requirements
+------------
+
+1. Core
+
+   * GNU Emacs 29.1 or later (30+ recommended), built with tree-sitter
+     support.  On macOS:
+
+       brew install emacs-plus@30    # from d12frosted/emacs-plus tap
+
+   * git 2.23 or later
+   * ripgrep (rg)  -- required by Doom for searching
+   * fd            -- faster file finding; bound to M-# (consult-fd)
+   * GNU coreutils and make
+
+       brew install git ripgrep fd coreutils make
+
+2. Fonts
+
+   * Iosevka Term SS15 -- primary font set in config.el
+
+       brew install --cask font-iosevka-term-ss15
+
+   * Nerd Fonts icons for the mode line and dashboard; after the first
+     start run inside Emacs:
+
+       M-x nerd-icons-install-fonts
+
+3. PDF support (:tools pdf)
+
+   pdf-tools compiles a small server (epdfinfo) on first run and needs:
+
+       brew install poppler automake pkg-config
+
+4. Language toolchains and LSP servers
+
+   LSP is provided through eglot.  Install the servers for the
+   languages you actually use; the rest can be skipped.
+
+   Language     Toolchain            Language server
+   --------     ---------            ---------------
+   C / C++      clang                clangd (ships with Xcode CLT)
+   Elixir       elixir               elixir-ls, unpacked to
+                                     ~/elixir-ls-v0.31.1/ (path is
+                                     hard-coded in config.el)
+   Go           go                   gopls
+   JavaScript   node                 typescript-language-server
+   LaTeX        MacTeX or TeX Live   texlab (optional)
+   Lua          lua                  lua-language-server (optional)
+   Nix          nix                  nil or nixd
+   Python       python3              ty (config.el registers "ty server"
+                                     with eglot); pyright as fallback
+   Ruby/Rails   ruby                 ruby-lsp (gem install ruby-lsp)
+   Rust         rustup               rust-analyzer (rustup component)
+   Shell        bash/zsh             bash-language-server, shellcheck
+   Swift        Xcode                sourcekit-lsp (ships with Xcode)
+   Zig          zig                  zls (optional)
+
+   Note that config.el also adds ~/.local/bin to `exec-path', so
+   servers installed there (e.g. via pipx or uv) are found.
+
+5. Miscellaneous tools
+
+   * just   -- for just-mode        (brew install just)
+   * typst  -- for typst-ts-mode    (brew install typst)
+   * protoc -- for protobuf-mode    (brew install protobuf)
+   * An API key for gptel, if you use it (e.g. OPENAI_API_KEY or an
+     Anthropic key, configured separately).
+
+Installation
+------------
+
+1. Install Doom Emacs:
+
+       git clone --depth 1 https://github.com/doomemacs/doomemacs \
+           ~/.config/emacs
+
+2. Clone this repository WITH submodules (the local packages are
+   required by packages.el; note the submodule URLs use SSH, so a
+   GitHub SSH key must be set up first):
+
+       git clone --recurse-submodules \
+           git@github.com:desonglll/doom.git ~/.config/doom
+
+   If already cloned without submodules:
+
+       git -C ~/.config/doom submodule update --init
+
+3. Run the installer and sync:
+
+       ~/.config/emacs/bin/doom install
+       ~/.config/emacs/bin/doom sync
+
+   Add ~/.config/emacs/bin to PATH for convenience.
+
+4. Start Emacs, then run `M-x nerd-icons-install-fonts'.  The first
+   time a PDF is opened, pdf-tools will offer to build epdfinfo;
+   accept it.
+
+5. Check the installation:
+
+       ~/.config/emacs/bin/doom doctor
+
+Notes
+-----
+
+* Org files are expected under ~/org/ (see `org-directory').
+* Backups and auto-save files go to ~/.emacs.d/backups/.
+* The theme is gruber-darker; pyim with pyim-basedict provides Chinese
+  input inside Emacs.
+
+Bugs
+----
+
+Report problems at https://github.com/desonglll/doom/issues.
