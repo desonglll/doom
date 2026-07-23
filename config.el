@@ -24,10 +24,10 @@
 (add-to-list 'exec-path "/opt/homebrew/bin/")
 (add-to-list 'exec-path "~/.local/bin/")
 
-
 (after! eglot
   (add-to-list 'eglot-server-programs '((python-mode python-ts-mode) . ("ty" "server")))
   (add-to-list 'eglot-server-programs '((ruby-mode ruby-ts-mode) . ("ruby-lsp")))
+  (add-to-list 'eglot-server-programs '((typescript-mode typescript-ts-mode) . ("tsc" "--lsp" "--stdio")))
   (setq elixir-lsp-path "~/elixir-ls-v0.31.1/")
   (add-to-list 'eglot-server-programs `((elixir-mode elixir-ts-mode) . (,(expand-file-name "language_server.sh" elixir-lsp-path)))))
 
@@ -114,7 +114,12 @@
 ;;   this file. Emacs searches the `load-path' when you load packages with
 ;;   `require' or `use-package'.
 ;; - `map!' for binding new keys
-;;
+
+(use-package! yasnippet
+  :config
+  (yas-global-mode 1)
+  )
+
 ;; To get information about any of these functions/macros, move the cursor over
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
 ;; This will open documentation for it, including demos of how they are used.
