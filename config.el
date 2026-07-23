@@ -66,8 +66,8 @@
 ;; (setq doom-font (font-spec :family "Terminess Nerd Font" :size 25 :weight 'regular)
 ;;       doom-variable-pitch-font (font-spec :family "Terminess Nerd Font" :size 25))
 
-(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 16 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 16))
+(setq doom-font (font-spec :family "Iosevka Term SS15" :size 16 :weight 'regular)
+      doom-variable-pitch-font (font-spec :family "Iosevka Term SS15" :size 16))
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (add-hook 'emacs-startup-hook
