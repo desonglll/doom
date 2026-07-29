@@ -30,7 +30,7 @@
 (package! gruber-darker-theme)
 (package! imenu-list)
 (package! yasnippet)
-
+(package! exec-path-from-shell)
 
 ;; (load-file "/Volumes/Tuo-APFS/workspace/translate/translate.el")
 

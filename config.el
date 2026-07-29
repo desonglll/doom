@@ -17,9 +17,17 @@
       "s-u" #'revert-buffer
       "s-i" #'imenu-list
       "s-e" #'treemacs
-      "M-o" #'ace-window)
+      "M-o" #'ace-window
+      "C-c RET" #'ffap
+      )
 
 (setq symbols-outline-window-position 'right)
+(after! exec-path-from-shell
+  (setq exec-path-from-shell-arguments '("-l"))
+  (exec-path-from-shell-initialize))
+
+(executable-find "node")
+(executable-find "npm")
 
 (setenv "PATH"
         (concat
@@ -73,19 +81,26 @@
 ;; (setq doom-font (font-spec :family "Terminess Nerd Font" :size 25 :weight 'regular)
 ;;       doom-variable-pitch-font (font-spec :family "Terminess Nerd Font" :size 25))
 
+(find-font (font-spec :family "Iosevka Term SS15"))
+(find-font (font-spec :family "Sarasa Term SC"))
+
 (setq doom-font
       (font-spec :family "Iosevka Term SS15"
                  :size 16
                  :weight 'regular)
-
       doom-variable-pitch-font
       (font-spec :family "Iosevka Term SS15"
                  :size 16))
 
-(dolist (charset '(kana han cjk-misc bopomofo))
-  (set-fontset-font t charset
-                    (font-spec :family "Sarasa Term SC"
-                               :size 16)))
+(defun my/set-cjk-font ()
+  (when (display-graphic-p)
+    (dolist (charset '(han kana cjk-misc bopomofo))
+      (set-fontset-font t charset
+                        (font-spec :family "Sarasa Term SC")
+                        nil
+                        'prepend))))
+
+(add-hook 'after-setting-font-hook #'my/set-cjk-font)
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (add-hook 'emacs-startup-hook
