@@ -25,6 +25,7 @@
         (concat
          "/opt/homebrew/bin:"
          "~/.local/bin:"
+         "/Users/mikeshinoda/.config/nvm/versions/node/v24.18.0/bin:"
          (getenv "PATH")))
 ;; (add-to-list 'exec-path "/opt/homebrew/bin/")
 ;; (add-to-list 'exec-path "~/.local/bin/")
@@ -72,8 +73,19 @@
 ;; (setq doom-font (font-spec :family "Terminess Nerd Font" :size 25 :weight 'regular)
 ;;       doom-variable-pitch-font (font-spec :family "Terminess Nerd Font" :size 25))
 
-(setq doom-font (font-spec :family "Iosevka Term SS15" :size 16 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "Iosevka Term SS15" :size 16))
+(setq doom-font
+      (font-spec :family "Iosevka Term SS15"
+                 :size 16
+                 :weight 'regular)
+
+      doom-variable-pitch-font
+      (font-spec :family "Iosevka Term SS15"
+                 :size 16))
+
+(dolist (charset '(kana han cjk-misc bopomofo))
+  (set-fontset-font t charset
+                    (font-spec :family "Sarasa Term SC"
+                               :size 16)))
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (add-hook 'emacs-startup-hook
