@@ -12,8 +12,6 @@
 (package! ace-window)
 (package! gptel)
 (package! just-mode)
-(package! typst-ts-mode
-  :recipe (:host codeberg :repo "meow_king/typst-ts-mode"))
 (package! translate
   ;; :recipe (:host github :repo "desonglll/translate.el")
   :recipe (:local-repo "~/.config/doom/local-packages/translate.el/")
@@ -31,6 +29,7 @@
 (package! imenu-list)
 (package! yasnippet)
 (package! exec-path-from-shell)
+(package! typst-ts-mode :recipe (:host codeberg :repo "meow_king/typst-ts-mode"))
 
 ;; (load-file "/Volumes/Tuo-APFS/workspace/translate/translate.el")
 

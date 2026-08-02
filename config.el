@@ -14,6 +14,8 @@
       "C-:" #'avy-goto-char-2
       "s-\\" #'avy-goto-char-2
       "M-#" #'consult-fd
+      "M-n" #'consult-ripgrep
+      "M-p" #'consult-fd
       "s-u" #'revert-buffer
       "s-i" #'imenu-list
       "s-e" #'treemacs
@@ -22,19 +24,7 @@
       )
 
 (setq symbols-outline-window-position 'right)
-(after! exec-path-from-shell
-  (setq exec-path-from-shell-arguments '("-l"))
-  (exec-path-from-shell-initialize))
 
-(executable-find "node")
-(executable-find "npm")
-
-(setenv "PATH"
-        (concat
-         "/opt/homebrew/bin:"
-         "~/.local/bin:"
-         "/Users/mikeshinoda/.config/nvm/versions/node/v24.18.0/bin:"
-         (getenv "PATH")))
 ;; (add-to-list 'exec-path "/opt/homebrew/bin/")
 ;; (add-to-list 'exec-path "~/.local/bin/")
 
@@ -45,20 +35,6 @@
 ;;   (add-to-list 'eglot-server-programs '((typescript-mode typescript-ts-mode) . ("tsc" "--lsp" "--stdio")))
 ;;   (setq elixir-lsp-path "~/elixir-ls-v0.31.1/")
 ;;   (add-to-list 'eglot-server-programs `((elixir-mode elixir-ts-mode) . (,(expand-file-name "language_server.sh" elixir-lsp-path)))))
-
-(after! pyim-basedict
-  (pyim-basedict-enable)
-
-  )
-
-(after! consult
-  (consult-customize
-   consult-ripgrep consult-git-grep consult-grep consult-man
-   consult-bookmark consult-recent-file consult-xref
-   consult-source-bookmark consult-source-file-register
-   consult-source-recent-file consult-source-project-recent-file
-   :preview-key '(:debounce 0.4 any))
-  )
 
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
@@ -148,9 +124,36 @@
 ;;   `require' or `use-package'.
 ;; - `map!' for binding new keys
 
-(use-package! yasnippet
-  :config
-  (yas-global-mode 1)
+
+(use-package! typst-ts-mode
+  :mode "\\.typ\\'"
+  :hook (typst-ts-mode . lsp-deferred))
+
+(with-eval-after-load 'lsp-typst
+  (require 'typst-ts-lsp)
+  (setq lsp-typst-server-command
+        (list typst-ts-lsp-download-path)))
+
+(with-eval-after-load 'lsp-typst
+  (require 'typst-ts-lsp)
+  (setq lsp-typst-server-command
+        (list typst-ts-lsp-download-path)))
+
+(with-eval-after-load 'exec-path-from-shell
+  (setq exec-path-from-shell-arguments '("-l"))
+  (exec-path-from-shell-initialize))
+
+(with-eval-after-load 'pyim-basedict
+  (pyim-basedict-enable)
+  )
+
+(with-eval-after-load 'consult
+  (consult-customize
+   consult-ripgrep consult-git-grep consult-grep consult-man
+   consult-bookmark consult-recent-file consult-xref
+   consult-source-bookmark consult-source-file-register
+   consult-source-recent-file consult-source-project-recent-file
+   :preview-key '(:debounce 0.4 any))
   )
 
 ;; To get information about any of these functions/macros, move the cursor over
