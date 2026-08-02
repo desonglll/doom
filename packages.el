@@ -27,7 +27,6 @@
 (package! pyim-basedict)
 (package! gruber-darker-theme)
 (package! imenu-list)
-(package! yasnippet)
 (package! exec-path-from-shell)
 (package! typst-ts-mode :recipe (:host codeberg :repo "meow_king/typst-ts-mode"))
 

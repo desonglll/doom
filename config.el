@@ -2,10 +2,12 @@
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
-(setq make-backup-files nil)
-(setq auto-save-default nil)
-(setq backup-directory-alist `(("." . "~/.emacs.d/backups/")))
-(setq auto-save-file-name-transforms `((".*" "~/.emacs.d/backups/" t)))
+
+;; (setq make-backup-files nil
+;;       auto-save-default nil)
+
+(setq backup-directory-alist `(("." . "~/.emacs.d/backups/"))
+      auto-save-file-name-transforms `((".*" "~/.emacs.d/backups/" t)))
 
 (map! :g
       "M-<f1>" #'magit-status
@@ -39,8 +41,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
+(setq user-full-name "Mike Shinoda"
+      user-mail-address "lindesong666@163.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -56,9 +58,6 @@
 ;;
 ;; (setq doom-font (font-spec :family "Terminess Nerd Font" :size 25 :weight 'regular)
 ;;       doom-variable-pitch-font (font-spec :family "Terminess Nerd Font" :size 25))
-
-(find-font (font-spec :family "Iosevka Term SS15"))
-(find-font (font-spec :family "Sarasa Term SC"))
 
 (setq doom-font
       (font-spec :family "Iosevka Term SS15"
@@ -125,7 +124,7 @@
 ;; - `map!' for binding new keys
 
 
-(use-package! typst-ts-mode
+(use-package typst-ts-mode
   :mode "\\.typ\\'"
   :hook (typst-ts-mode . lsp-deferred))
 
@@ -134,18 +133,14 @@
   (setq lsp-typst-server-command
         (list typst-ts-lsp-download-path)))
 
-(with-eval-after-load 'lsp-typst
-  (require 'typst-ts-lsp)
-  (setq lsp-typst-server-command
-        (list typst-ts-lsp-download-path)))
+(use-package pyim-basedict
+  :after pyim
+  :config
+  (pyim-basedict-enable))
 
-(with-eval-after-load 'exec-path-from-shell
-  (setq exec-path-from-shell-arguments '("-l"))
-  (exec-path-from-shell-initialize))
-
-(with-eval-after-load 'pyim-basedict
-  (pyim-basedict-enable)
-  )
+;; (with-eval-after-load 'exec-path-from-shell
+;;   (setq exec-path-from-shell-arguments '("-l"))
+;;   (exec-path-from-shell-initialize))
 
 (with-eval-after-load 'consult
   (consult-customize
