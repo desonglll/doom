@@ -22,12 +22,10 @@
   )
 
 (package! protobuf-mode)
-
 (package! pyim)
 (package! pyim-basedict)
 (package! gruber-darker-theme)
 (package! imenu-list)
-(package! exec-path-from-shell)
 (package! typst-ts-mode :recipe (:host codeberg :repo "meow_king/typst-ts-mode"))
 
 ;; (load-file "/Volumes/Tuo-APFS/workspace/translate/translate.el")

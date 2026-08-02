@@ -7,7 +7,9 @@
 ;;       auto-save-default nil)
 
 (setq backup-directory-alist `(("." . "~/.emacs.d/backups/"))
-      auto-save-file-name-transforms `((".*" "~/.emacs.d/backups/" t)))
+      auto-save-file-name-transforms `((".*" "~/.emacs.d/backups/" t))
+      symbols-outline-window-position 'right
+      imenu-list-position 'right)
 
 (map! :g
       "M-<f1>" #'magit-status
@@ -16,8 +18,7 @@
       "C-:" #'avy-goto-char-2
       "s-\\" #'avy-goto-char-2
       "M-#" #'consult-fd
-      "M-n" #'consult-ripgrep
-      "M-p" #'consult-fd
+      "C-c r" #'consult-ripgrep
       "s-u" #'revert-buffer
       "s-i" #'imenu-list
       "s-e" #'treemacs
@@ -25,7 +26,7 @@
       "C-c RET" #'ffap
       )
 
-(setq symbols-outline-window-position 'right)
+
 
 ;; (add-to-list 'exec-path "/opt/homebrew/bin/")
 ;; (add-to-list 'exec-path "~/.local/bin/")
